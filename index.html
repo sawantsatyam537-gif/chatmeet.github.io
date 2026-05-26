@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatMeet – Virtual Desi Companions, Real Conversations</title>
+  <meta name="description" content="ChatMeet is an AI-powered mobile app for Indian users. Chat with virtual desi companions in Hindi & English. Download on Google Play."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --card: #1a1a26;
+      --border: #2a2a3a;
+      --pink: #ff2d78;
+      --pink-soft: #ff6ba0;
+      --gold: #ffc947;
+      --white: #f0eeff;
+      --muted: #8888aa;
+      --gradient: linear-gradient(135deg, #ff2d78, #c020f0);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.5rem;
+      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--gradient); color: #fff; border: none;
+      padding: 0.6rem 1.4rem; border-radius: 50px;
+      font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.9rem;
+      cursor: pointer; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,45,120,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-glow-2 {
+      position: absolute; width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(192,32,240,0.1) 0%, transparent 70%);
+      top: 20%; right: 10%;
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,45,120,0.1); border: 1px solid rgba(255,45,120,0.3);
+      padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.8rem; color: var(--pink-soft); margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800; line-height: 1.1;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero h1 span {
+      background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--muted); max-width: 520px;
+      margin: 0 auto 2.5rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .hero-buttons {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--gradient); color: #fff;
+      padding: 0.9rem 2rem; border-radius: 50px;
+      font-weight: 600; text-decoration: none; font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 30px rgba(255,45,120,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(255,45,120,0.5); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 50px;
+      font-weight: 500; text-decoration: none; font-size: 1rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--pink); background: rgba(255,45,120,0.05); }
+
+    /* FEATURES */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--pink);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--muted); max-width: 500px; margin-bottom: 3rem; }
+
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .feature-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .feature-card:hover { border-color: var(--pink); transform: translateY(-4px); }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(255,45,120,0.1); display: flex; align-items: center;
+      justify-content: center; font-size: 1.4rem; margin-bottom: 1.2rem;
+    }
+    .feature-card h3 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 1.1rem; margin-bottom: 0.5rem;
+    }
+    .feature-card p { color: var(--muted); font-size: 0.9rem; }
+
+    /* PRICING */
+    .pricing-section { background: var(--surface); }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem; max-width: 800px;
+    }
+    .pricing-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem; text-align: center;
+      position: relative; transition: transform 0.3s, border-color 0.3s;
+    }
+    .pricing-card:hover { transform: translateY(-4px); }
+    .pricing-card.popular {
+      border-color: var(--pink);
+      box-shadow: 0 0 30px rgba(255,45,120,0.15);
+    }
+    .popular-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--gradient); color: #fff;
+      padding: 0.25rem 1rem; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+    .coin-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .coin-amount {
+      font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+      color: var(--gold);
+    }
+    .coin-label { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+    .coin-price {
+      font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 700;
+      color: var(--pink);
+    }
+    .coin-name { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+
+    /* HOW IT WORKS */
+    .steps { display: flex; flex-direction: column; gap: 2rem; max-width: 600px; }
+    .step { display: flex; gap: 1.5rem; align-items: flex-start; }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      background: var(--gradient); display: flex; align-items: center;
+      justify-content: center; font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1rem;
+    }
+    .step h3 { font-family: 'Syne', sans-serif; font-weight: 700; margin-bottom: 0.3rem; }
+    .step p { color: var(--muted); font-size: 0.9rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 3rem;
+      justify-content: space-between; margin-bottom: 2rem;
+    }
+    .footer-brand .nav-logo { font-size: 1.3rem; margin-bottom: 0.8rem; display: block; }
+    .footer-brand p { color: var(--muted); font-size: 0.85rem; max-width: 250px; }
+    .footer-links h4 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 0.9rem; margin-bottom: 1rem; color: var(--white);
+    }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--pink); }
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      border-top: 1px solid var(--border); padding-top: 1.5rem;
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      justify-content: space-between; align-items: center;
+    }
+    .footer-bottom p { color: var(--muted); font-size: 0.8rem; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 320px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">ChatMeet</span>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Coins</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="https://play.google.com/store/apps/details?id=com.chatmeet.virtual" target="_blank" class="nav-cta">Download App</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div>
+    <div class="hero-badge">🇮🇳 Made for India &nbsp;·&nbsp; Hindi & English</div>
+    <h1>Virtual Desi Companions,<br><span>Real Conversations</span></h1>
+    <p>ChatMeet brings you AI-powered companions that understand your language, your culture, and your vibe — anytime, anywhere.</p>
+    <div class="hero-buttons">
+      <a href="https://play.google.com/store/apps/details?id=com.chatmeet.virtual" target="_blank" class="btn-primary">
+        ▶ Download on Play Store
+      </a>
+      <a href="#features" class="btn-secondary">Learn More →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <p class="section-tag">Why ChatMeet</p>
+    <h2 class="section-title">Everything you need,<br>nothing you don't</h2>
+    <p class="section-sub">Built from the ground up for Indian users who want meaningful AI conversations.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🗣️</div>
+        <h3>Hindi & English</h3>
+        <p>Chat freely in Hindi, English, or mix both — our AI companions get it naturally.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI-Powered Personas</h3>
+        <p>Multiple unique AI personalities, each with their own style, tone, and vibe.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Private & Secure</h3>
+        <p>Your conversations stay yours. Built with Firebase Authentication and end-to-end security.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Always Available</h3>
+        <p>24/7 access to your AI companion — no waiting, no offline hours, no missed chats.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🪙</div>
+        <h3>Flexible Coin Packs</h3>
+        <p>Buy only what you need. Affordable coin packs starting at just ₹50.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Android Native</h3>
+        <p>Smooth, fast, and optimised for Android devices across all screen sizes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <p class="section-tag">Coin Packs</p>
+    <h2 class="section-title">Simple, transparent pricing</h2>
+    <p class="section-sub">Purchase digital coins to access premium AI conversation features in the app.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="coin-icon">🌟</div>
+        <div class="coin-amount">55</div>
+        <div class="coin-label">coins</div>
+        <div class="coin-price">₹50</div>
+        <div class="coin-name">Starter Pack</div>
+      </div>
+      <div class="pricing-card popular">
+        <div class="popular-badge">🔥 Most Popular</div>
+        <div class="coin-icon">💰</div>
+        <div class="coin-amount">130</div>
+        <div class="coin-label">coins</div>
+        <div class="coin-price">₹100</div>
+        <div class="coin-name">Popular Pack</div>
+      </div>
+      <div class="pricing-card">
+        <div class="coin-icon">💎</div>
+        <div class="coin-amount">295</div>
+        <div class="coin-label">coins</div>
+        <div class="coin-price">₹200</div>
+        <div class="coin-name">Best Value Pack</div>
+      </div>
+    </div>
+    <p style="margin-top:2rem; color: var(--muted); font-size:0.85rem;">
+      All coin purchases are final. Digital coins are non-transferable and valid only within the ChatMeet app.<br>
+      For refund queries, see our <a href="refund.html" style="color:var(--pink);">Refund Policy</a>.
+    </p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <p class="section-tag">Getting Started</p>
+    <h2 class="section-title">Up and chatting<br>in 3 steps</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>Download ChatMeet</h3>
+          <p>Get the app free from Google Play Store. Sign up in seconds with your mobile number.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>Choose Your Companion</h3>
+          <p>Browse unique AI personas and pick the one that matches your mood and style.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>Buy Coins & Start Chatting</h3>
+          <p>Pick a coin pack, unlock premium features, and enjoy real conversations in Hindi or English.</p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <a href="https://play.google.com/store/apps/details?id=com.chatmeet.virtual" target="_blank" class="btn-primary" style="display:inline-flex; margin-top:1rem;">
+      ▶ Download Free on Play Store
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="nav-logo">ChatMeet</span>
+      <p>Virtual Desi Companions, Real Conversations. Made for India. 🇮🇳</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem;">Mumbai, Maharashtra, India</p>
+    </div>
+    <div class="footer-links">
+      <h4>App</h4>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Coin Packs</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.chatmeet.virtual" target="_blank">Download</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="contact.html">Help Center</a></li>
+        <li><a href="mailto:chatmeet.india@gmail.com">chatmeet.india@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 ChatMeet. All rights reserved.</p>
+    <p>For users 18 years and above only.</p>
+  </div>
+</footer>
+
+</body>
+</html>

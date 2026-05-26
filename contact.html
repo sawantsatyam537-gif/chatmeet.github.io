@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us – ChatMeet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0a0f;--surface:#12121a;--card:#1a1a26;--border:#2a2a3a;--pink:#ff2d78;--white:#f0eeff;--muted:#8888aa;--gradient:linear-gradient(135deg,#ff2d78,#c020f0);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.8;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;background:rgba(10,10,15,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+    .back-link{color:var(--muted);text-decoration:none;font-size:0.9rem;}
+    .back-link:hover{color:var(--pink);}
+    .page{max-width:780px;margin:0 auto;padding:8rem 2rem 4rem;}
+    .page-tag{font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--pink);margin-bottom:0.8rem;}
+    h1{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;margin-bottom:1rem;}
+    p{color:#c0c0d8;margin-bottom:1rem;}
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin:2.5rem 0;}
+    .contact-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:border-color 0.3s;}
+    .contact-card:hover{border-color:var(--pink);}
+    .contact-icon{font-size:2rem;margin-bottom:1rem;}
+    .contact-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:0.5rem;}
+    .contact-card p{color:var(--muted);font-size:0.85rem;margin-bottom:0.5rem;}
+    .contact-card a{color:var(--pink);text-decoration:none;font-size:0.9rem;font-weight:500;}
+    .contact-card a:hover{text-decoration:underline;}
+    .faq{margin-top:3rem;}
+    .faq h2{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;}
+    .faq-item{border-bottom:1px solid var(--border);padding:1.2rem 0;}
+    .faq-item h3{font-size:1rem;font-weight:500;margin-bottom:0.4rem;color:var(--white);}
+    .faq-item p{color:var(--muted);font-size:0.9rem;margin:0;}
+    a{color:var(--pink);}
+    .divider{border:none;border-top:1px solid var(--border);margin:3rem 0;}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">ChatMeet</a>
+  <a href="index.html" class="back-link">← Back to Home</a>
+</nav>
+<div class="page">
+  <p class="page-tag">Support</p>
+  <h1>Contact Us</h1>
+  <p>We're here to help. Reach out to us for any queries related to your account, coin purchases, or technical issues.</p>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">📧</div>
+      <h3>Email Support</h3>
+      <p>For all queries including refunds, account issues, and general support.</p>
+      <a href="mailto:chatmeet.india@gmail.com">chatmeet.india@gmail.com</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">⏱️</div>
+      <h3>Response Time</h3>
+      <p>We typically respond to all emails within 2 business days.</p>
+      <span style="color:var(--white);font-size:0.9rem;">Mon–Sat, 10am–6pm IST</span>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <h3>Location</h3>
+      <p>Our team is based in:</p>
+      <span style="color:var(--white);font-size:0.9rem;">Mumbai, Maharashtra, India</span>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📱</div>
+      <h3>Download App</h3>
+      <p>Get ChatMeet on Google Play Store.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.chatmeet.virtual" target="_blank">Download Now →</a>
+    </div>
+  </div>
+
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>My coins were not credited after payment. What do I do?</h3>
+      <p>Please wait up to 24 hours. If coins are still not credited, email us at chatmeet.india@gmail.com with your transaction ID and we'll resolve it within 2 business days.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I get a refund on my coin purchase?</h3>
+      <p>Refunds are available for duplicate charges, technical errors, or payment deducted without coin credit. Please see our <a href="refund.html">Refund Policy</a> for full details.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I delete my account?</h3>
+      <p>Email us at chatmeet.india@gmail.com with your registered email or mobile number and request account deletion. We'll process it within 5 business days.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is ChatMeet available on iOS?</h3>
+      <p>ChatMeet is currently available on Android via Google Play Store only. iOS support may be added in the future.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the minimum age to use ChatMeet?</h3>
+      <p>ChatMeet is intended for users who are 18 years of age or older.</p>
+    </div>
+  </div>
+
+  <hr class="divider"/>
+  <p style="font-size:0.85rem;color:var(--muted);">© 2025 ChatMeet. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a> | <a href="refund.html">Refund Policy</a></p>
+</div>
+</body>
+</html>
