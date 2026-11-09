@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Download ChatMeet – Free on Google Play</title>
+  <meta name="description" content="Download ChatMeet free on Google Play. Friendly Hinglish chats with virtual characters from across India."/>
+  <meta property="og:title" content="Download ChatMeet – Free on Google Play"/>
+  <meta property="og:description" content="Friendly Hinglish chats, anytime. Made for India."/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --card: #1a1a26;
+      --border: #2a2a3a;
+      --pink: #ff2d78;
+      --pink-soft: #ff6ba0;
+      --gold: #ffc947;
+      --white: #f0eeff;
+      --muted: #8888aa;
+      --gradient: linear-gradient(135deg, #ff2d78, #c020f0);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2rem;
+      background: rgba(10,10,15,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem;
+      background: var(--gradient); -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--white); }
+
+    /* BUTTONS */
+    .play-btn {
+      display: inline-flex; align-items: center; gap: .85rem;
+      background: #000; color: #fff; text-decoration: none;
+      padding: .7rem 1.6rem .7rem 1.2rem; border-radius: 14px;
+      border: 1px solid #3a3a4a;
+      box-shadow: 0 0 0 0 rgba(255,45,120,.5);
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    .play-btn:hover { transform: translateY(-2px); border-color: var(--pink); }
+    .play-btn svg { width: 30px; height: 30px; flex-shrink: 0; }
+    .play-btn small { display: block; font-size: .7rem; letter-spacing: .04em; opacity: .8; line-height: 1.2; }
+    .play-btn strong { display: block; font-family: 'Syne', sans-serif; font-size: 1.25rem; line-height: 1.2; }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(255,45,120,.45); }
+      50% { box-shadow: 0 0 0 12px rgba(255,45,120,0); }
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 7.5rem 2rem 4rem; position: relative; overflow: hidden;
+    }
+    .glow { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(10px); }
+    .glow-1 { width: 650px; height: 650px; background: radial-gradient(circle, rgba(255,45,120,.18), transparent 70%); top: -10%; right: -10%; }
+    .glow-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(192,32,240,.14), transparent 70%); bottom: -15%; left: -10%; }
+    .hero-inner {
+      max-width: 1150px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center;
+      position: relative;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,45,120,.1); border: 1px solid rgba(255,45,120,.3);
+      padding: .4rem 1rem; border-radius: 50px;
+      font-size: .8rem; color: var(--pink-soft); margin-bottom: 1.4rem;
+      animation: fadeUp .6s ease both;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.08;
+      margin-bottom: 1.3rem; animation: fadeUp .6s .1s ease both;
+    }
+    .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 500px; margin-bottom: 2.2rem; animation: fadeUp .6s .2s ease both; }
+    .hero-cta { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; animation: fadeUp .6s .3s ease both; }
+    .hero-points { display: flex; gap: 1.4rem; flex-wrap: wrap; margin-top: 2rem; color: var(--muted); font-size: .9rem; animation: fadeUp .6s .4s ease both; }
+    .hero-points span::before { content: "✓ "; color: var(--pink); font-weight: 700; }
+
+    /* PHONE MOCKUP */
+    .phone-wrap { position: relative; display: flex; justify-content: center; animation: fadeUp .8s .2s ease both; }
+    .phone {
+      width: 300px; height: 610px; border-radius: 44px;
+      background: #050508; padding: 12px;
+      border: 2px solid #2e2e40;
+      box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 60px rgba(255,45,120,.18);
+      position: relative; animation: float 6s ease-in-out infinite;
+    }
+    .phone::before {
+      content: ""; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+      width: 90px; height: 22px; background: #050508; border-radius: 20px; z-index: 3;
+    }
+    .screen {
+      width: 100%; height: 100%; border-radius: 34px; overflow: hidden;
+      background: #0f0f17; display: flex; flex-direction: column;
+    }
+    .chat-head {
+      display: flex; align-items: center; gap: .7rem;
+      padding: 2.6rem 1rem .8rem; background: #16161f; border-bottom: 1px solid #23232f;
+    }
+    .avatar {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      background: var(--gradient); display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem; overflow: hidden; position: relative;
+    }
+    .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .chat-head .name { font-weight: 700; font-size: .95rem; line-height: 1.2; }
+    .chat-head .status { font-size: .72rem; color: #4ade80; line-height: 1.2; }
+    .chat-body {
+      flex: 1; padding: 1rem .8rem; display: flex; flex-direction: column; gap: .55rem;
+      overflow: hidden; justify-content: flex-end;
+    }
+    .msg {
+      max-width: 80%; padding: .55rem .85rem; border-radius: 18px;
+      font-size: .84rem; line-height: 1.4;
+      opacity: 0; transform: translateY(8px) scale(.98);
+      transition: opacity .35s, transform .35s;
+    }
+    .msg.show { opacity: 1; transform: none; }
+    .msg.bot { background: #23232f; align-self: flex-start; border-bottom-left-radius: 5px; }
+    .msg.me { background: var(--gradient); align-self: flex-end; border-bottom-right-radius: 5px; }
+    .typing { display: inline-flex; gap: 4px; padding: .7rem .9rem; }
+    .typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: blink 1.2s infinite; }
+    .typing i:nth-child(2) { animation-delay: .2s; }
+    .typing i:nth-child(3) { animation-delay: .4s; }
+    @keyframes blink { 0%,60%,100% { opacity: .3; } 30% { opacity: 1; } }
+    .chat-input {
+      margin: .6rem .8rem 1rem; padding: .65rem 1rem; border-radius: 50px;
+      background: #1c1c27; color: var(--muted); font-size: .8rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .chat-input b { width: 30px; height: 30px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; color: #fff; font-size: .8rem; }
+    .float-chip {
+      position: absolute; background: rgba(26,26,38,.92); border: 1px solid var(--border);
+      backdrop-filter: blur(8px); border-radius: 14px; padding: .6rem .9rem;
+      font-size: .8rem; display: flex; align-items: center; gap: .5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,.4); white-space: nowrap;
+    }
+    .chip-1 { top: 18%; left: -6%; animation: float 5s ease-in-out infinite; }
+    .chip-2 { bottom: 16%; right: -4%; animation: float 5.5s 1s ease-in-out infinite; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+    /* SECTIONS */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1150px; margin: 0 auto; }
+    .center { text-align: center; }
+    .tag { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--pink); margin-bottom: .8rem; }
+    .title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .sub { color: var(--muted); max-width: 560px; margin: 0 auto 3rem; }
+
+    /* PROFILES (rotating) */
+    .profiles { background: var(--surface); }
+    .profile-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; max-width: 880px; margin: 0 auto; }
+    .profile {
+      border-radius: 22px; overflow: hidden; position: relative;
+      aspect-ratio: 3 / 4; background: var(--card); border: 1px solid var(--border);
+      transition: transform .35s, border-color .35s, box-shadow .35s;
+    }
+    .profile:nth-child(2) { transform: translateY(-18px); }
+    .profile:hover { border-color: var(--pink); box-shadow: 0 20px 50px rgba(255,45,120,.18); }
+    .layer {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0; transform: scale(1.06); transition: opacity 1s ease, transform 4s ease;
+    }
+    .layer.on { opacity: 1; transform: scale(1); }
+    .profile .shade { position: absolute; left: 0; right: 0; bottom: 0; height: 35%; background: linear-gradient(transparent, rgba(5,5,10,.75)); pointer-events: none; }
+    .online {
+      position: absolute; left: 12px; bottom: 12px; z-index: 2;
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .75rem; font-weight: 500; padding: .25rem .7rem; border-radius: 50px;
+      background: rgba(10,10,15,.6); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.12);
+    }
+    .online::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80; }
+    .disclaimer { margin-top: 2.2rem; color: var(--muted); font-size: .8rem; text-align: center; }
+
+    /* CHAT SCREENSHOTS (rotating) */
+    .shots { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+    .shot {
+      width: 240px; aspect-ratio: 9 / 19.5; border-radius: 34px; padding: 9px;
+      background: #050508; border: 2px solid #2e2e40;
+      box-shadow: 0 25px 60px rgba(0,0,0,.5), 0 0 40px rgba(255,45,120,.08);
+    }
+    .shot:nth-child(2) { transform: translateY(-24px); }
+    .shot-screen { width: 100%; height: 100%; border-radius: 26px; overflow: hidden; position: relative; background: #0f0f17; }
+    .shot-screen .layer { object-position: top; transform: none; }
+
+    /* FEATURES */
+    .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.3rem; }
+    .feat {
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 1.7rem;
+      transition: border-color .3s, transform .3s;
+    }
+    .feat:hover { border-color: var(--pink); transform: translateY(-4px); }
+    .feat .ic { width: 46px; height: 46px; border-radius: 12px; background: rgba(255,45,120,.1); display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: 1rem; }
+    .feat h3 { font-family: 'Syne', sans-serif; font-size: 1.05rem; margin-bottom: .35rem; }
+    .feat p { color: var(--muted); font-size: .9rem; }
+
+    /* FINAL CTA */
+    .final {
+      background: var(--surface);
+    }
+    .final-card {
+      max-width: 950px; margin: 0 auto; border-radius: 28px; padding: 3.5rem;
+      background: linear-gradient(135deg, rgba(255,45,120,.14), rgba(192,32,240,.12));
+      border: 1px solid rgba(255,45,120,.3);
+      display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+    }
+    .qr { background: #fff; padding: 12px; border-radius: 18px; width: 170px; }
+    .qr-cap { text-align: center; color: var(--muted); font-size: .8rem; margin-top: .6rem; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 2rem; }
+    .foot { max-width: 1150px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
+    .foot p, .foot a { color: var(--muted); font-size: .82rem; text-decoration: none; }
+    .foot a:hover { color: var(--pink); }
+    .foot-links { display: flex; gap: 1.3rem; flex-wrap: wrap; }
+
+    /* STICKY MOBILE BAR */
+    .sticky-bar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 99;
+      display: none; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: .75rem 1rem; background: rgba(18,18,26,.96); backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      transform: translateY(100%); transition: transform .3s;
+    }
+    .sticky-bar.on { transform: none; }
+    .sticky-bar .t { font-size: .85rem; line-height: 1.3; }
+    .sticky-bar .t b { font-family: 'Syne', sans-serif; display: block; font-size: 1rem; }
+    .sticky-bar a {
+      background: var(--gradient); color: #fff; text-decoration: none; font-weight: 700;
+      padding: .7rem 1.3rem; border-radius: 50px; font-size: .9rem; white-space: nowrap;
+    }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-cta, .hero-points { justify-content: center; }
+      .final-card { grid-template-columns: 1fr; text-align: center; padding: 2.5rem 1.5rem; }
+      .final-card .qr-box { display: none; }
+      .chip-1 { left: 0; } .chip-2 { right: 0; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      section { padding: 4.5rem 1.2rem; }
+      .hero { padding: 6.5rem 1.2rem 3rem; }
+      .phone { width: 270px; height: 550px; }
+      .profile-row { gap: .6rem; }
+      .profile { border-radius: 14px; }
+      .profile:nth-child(2) { transform: none; }
+      .online { font-size: .62rem; padding: .15rem .5rem; left: 7px; bottom: 7px; }
+      .shot { width: 260px; }
+      .shot:nth-child(2) { transform: none; }
+      .sticky-bar { display: flex; }
+      body { padding-bottom: 70px; }
+      .float-chip { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">ChatMeet</a>
+  <ul class="nav-links">
+    <li><a href="#characters">Characters</a></li>
+    <li><a href="#screens">App Screens</a></li>
+    <li><a href="#why">Why ChatMeet</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="badge">🇮🇳 Made for India &nbsp;·&nbsp; Baatein Hinglish mein</div>
+      <h1>Apni bhasha mein,<br><span class="grad">apne andaaz mein</span><br>baat karo.</h1>
+      <p class="hero-sub">Friendly chats with virtual characters from across India — about your day, cricket, movies, food, anything. Whenever you feel like talking.</p>
+      <div class="hero-cta">
+        <a class="play-btn js-play" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34A853" d="M3.6 1.8 13.4 12l-9.8 10.2c-.4-.2-.6-.7-.6-1.2V3c0-.5.2-1 .6-1.2z"/><path fill="#FBBC04" d="m16.8 15.4-3.4-3.4 3.4-3.4 3.8 2.2c1.1.6 1.1 1.8 0 2.4z"/><path fill="#4285F4" d="M16.8 15.4 13.4 12 3.6 22.2c.4.2.9.2 1.4-.1z"/><path fill="#EA4335" d="M16.8 8.6 5 1.9c-.5-.3-1-.3-1.4-.1L13.4 12z"/></svg>
+          <span><small>GET IT ON</small><strong>Google Play</strong></span>
+        </a>
+      </div>
+      <div class="hero-points">
+        <span>Free to download</span>
+        <span>Sign in with Google</span>
+        <span>Chats in Hinglish</span>
+      </div>
+    </div>
+
+    <div class="phone-wrap">
+      <div class="float-chip chip-1">💬 Online now</div>
+      <div class="float-chip chip-2">☕ Chai pe charcha</div>
+      <div class="phone">
+        <div class="screen">
+          <div class="chat-head">
+            <div class="avatar" id="chatAvatar">A</div>
+            <div>
+              <div class="name" id="chatName">Ananya</div>
+              <div class="status">● online</div>
+            </div>
+          </div>
+          <div class="chat-body" id="chatBody"></div>
+          <div class="chat-input"><span>Message likho...</span><b>➤</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTERS -->
+<section id="characters" class="profiles">
+  <div class="container">
+    <div class="center reveal">
+      <p class="tag">Meet the characters</p>
+      <h2 class="title">Har sheher se, <span class="grad">har mood ke liye</span></h2>
+      <p class="sub">Every character has her own personality and way of talking. Pick anyone and start a conversation.</p>
+    </div>
+    <div class="profile-row reveal" id="profileRow"></div>
+    <p class="disclaimer">All profiles are virtual characters created for entertainment. For users 18+.</p>
+  </div>
+</section>
+
+<!-- CHAT SCREENSHOTS -->
+<section id="screens">
+  <div class="container">
+    <div class="center reveal">
+      <p class="tag">Inside the app</p>
+      <h2 class="title">Real conversations, <span class="grad">every day</span></h2>
+      <p class="sub">Quick replies, a fun mood and chats that feel natural. This is what talking on ChatMeet looks like.</p>
+    </div>
+    <div class="shots reveal" id="shotRow"></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="background: var(--surface);">
+  <div class="container">
+    <div class="center reveal">
+      <p class="tag">Why ChatMeet</p>
+      <h2 class="title">Baatein jo <span class="grad">bore na karein</span></h2>
+      <p class="sub">Made for India, from the ground up.</p>
+    </div>
+    <div class="feat-grid reveal">
+      <div class="feat"><div class="ic">🗣️</div><h3>Your language</h3><p>Hinglish, just the way you chat with friends every day.</p></div>
+      <div class="feat"><div class="ic">⚡</div><h3>Instant replies</h3><p>No waiting around. Get a reply within seconds, any time of day.</p></div>
+      <div class="feat"><div class="ic">🏙️</div><h3>Desi vibes</h3><p>Characters from Mumbai to Delhi to Bengaluru, each with a local touch.</p></div>
+      <div class="feat"><div class="ic">🔒</div><h3>Private</h3><p>Secure sign-in and your chats stay with you.</p></div>
+      <div class="feat"><div class="ic">🪙</div><h3>Pay as you go</h3><p>No subscriptions. Coin packs start at just ₹50 via Google Play.</p></div>
+      <div class="feat"><div class="ic">📱</div><h3>Light &amp; smooth</h3><p>Small download, runs smoothly on most Android phones.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="final-card reveal">
+    <div>
+      <p class="tag">Ready?</p>
+      <h2 class="title">Download ChatMeet <span class="grad">free</span> today</h2>
+      <p style="color:var(--muted); margin-bottom:1.8rem;">Takes less than a minute to install and sign in. Your first conversation is waiting.</p>
+      <a class="play-btn js-play" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34A853" d="M3.6 1.8 13.4 12l-9.8 10.2c-.4-.2-.6-.7-.6-1.2V3c0-.5.2-1 .6-1.2z"/><path fill="#FBBC04" d="m16.8 15.4-3.4-3.4 3.4-3.4 3.8 2.2c1.1.6 1.1 1.8 0 2.4z"/><path fill="#4285F4" d="M16.8 15.4 13.4 12 3.6 22.2c.4.2.9.2 1.4-.1z"/><path fill="#EA4335" d="M16.8 8.6 5 1.9c-.5-.3-1-.3-1.4-.1L13.4 12z"/></svg>
+        <span><small>GET IT ON</small><strong>Google Play</strong></span>
+      </a>
+    </div>
+    <div class="qr-box">
+      <img class="qr" src="images/playstore-qr.svg" alt="QR code to download ChatMeet on Google Play">
+      <p class="qr-cap">Scan with your phone</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <p>© 2026 ChatMeet · For users 18 years and above only.</p>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="refund.html">Refunds</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-bar" id="stickyBar">
+  <div class="t"><b>ChatMeet</b>Free on Google Play</div>
+  <a class="js-play" href="#" target="_blank" rel="noopener">Install</a>
+</div>
+
+<script>
+  /* =========================================================
+     EDIT HERE — everything you may want to change is below
+     ========================================================= */
+
+  // Play Store link. The utm values let you see in Play Console
+  // how many installs came from this page.
+  const PLAY_URL = "https://play.google.com/store/apps/details?id=com.chatmeet.virtual"
+                 + "&referrer=utm_source%3Dwebsite%26utm_medium%3Ddownload_page";
+
+  // Profile photos (Cloudinary). 3 random ones are shown at a time and
+  // they keep rotating. Add or remove links freely.
+  const PROFILE_PHOTOS = [
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246658/Untitled_design_1_etlqgo.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246656/Untitled_design_2_bpo1ry.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246656/Untitled_design_3_liwh76.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246653/Untitled_design_4_nmokht.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246652/Untitled_design_5_xbct5d.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246649/Untitled_design_6_gfv8y8.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246647/Untitled_design_9_ri9y23.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246648/Untitled_design_8_gum7a2.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246648/Untitled_design_7_z9pex8.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246644/Untitled_design_10_gbxhbl.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246641/Untitled_design_11_dnt4uc.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246638/Untitled_design_12_u6pun9.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246637/Untitled_design_13_ilhsb5.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246635/Untitled_design_14_ckr2oh.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246633/Untitled_design_15_b80bev.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246631/Untitled_design_16_yxokb4.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246630/Untitled_design_18_ht3cti.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794246630/Untitled_design_17_zwnnry.jpg",
+  ];
+
+  // Chat screenshots (Cloudinary). Shown in 3 phones, rotating.
+  const CHAT_SHOTS = [
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794251001/Untitled_design_5_jfdo5x.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794250998/Untitled_design_3_bkh1yv.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794250998/Untitled_design_4_dhobio.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794250998/Untitled_design_1_wrreet.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794250998/Untitled_design_2_yj7wro.jpg",
+    "https://res.cloudinary.com/dt9vltdtx/image/upload/v1794250998/Untitled_design_6_ezbsbm.jpg",
+  ];
+
+  // Seconds between each photo change.
+  const ROTATE_EVERY = 3;
+
+  // Name shown on top of the animated chat in the first phone.
+  const HERO_NAME = "Ananya";
+
+  // The animated chat in the hero phone (who: "me" or "bot").
+  const CHAT = [
+    { who: "me",  text: "Hi! Kaisi ho? 😊" },
+    { who: "bot", text: "Main badhiya! Abhi chai pi rahi thi ☕ Tumhara din kaisa gaya?" },
+    { who: "me",  text: "Office mein bahut kaam tha yaar" },
+    { who: "bot", text: "Arre, thak gaye hoge! Weekend ka kya plan hai?" },
+    { who: "me",  text: "Shayad cricket match dekhunga 🏏" },
+    { who: "bot", text: "Sahi hai! Kaun si team support karte ho? 😄" },
+  ];
+
+  /* ========================================================= */
+
+  // Play links
+  document.querySelectorAll(".js-play").forEach(a => a.href = PLAY_URL);
+
+  // Cloudinary resize/compress helper: adds a transformation to the URL
+  const cld = (url, t) => url.replace("/upload/", "/upload/" + t + "/");
+  const PROFILE_T = "f_auto,q_auto,c_fill,g_auto,w_600,h_800";
+  const CHAT_T    = "f_auto,q_auto,w_540";
+
+  const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+  // Builds N slots that each crossfade to a new random image,
+  // never showing the same image in two slots at once.
+  function rotator(container, urls, slots, makeSlot, transform) {
+    const pool = shuffle(urls);
+    const shown = pool.slice(0, slots);
+    let queue = pool.slice(slots);
+    const cards = shown.map(url => {
+      const { el, holder } = makeSlot();
+      const a = document.createElement("img"), b = document.createElement("img");
+      [a, b].forEach(img => { img.className = "layer"; img.alt = ""; holder.appendChild(img); });
+      a.src = cld(url, transform); a.onload = () => a.classList.add("on");
+      container.appendChild(el);
+      return { front: a, back: b };
+    });
+    if (urls.length <= slots) return;
+    let turn = 0;
+    setInterval(() => {
+      if (document.hidden) return;
+      if (!queue.length) queue = shuffle(urls.filter(u => !shown.includes(u)));
+      const i = turn++ % slots, next = queue.shift(), card = cards[i];
+      const pre = new Image();
+      pre.onload = () => {
+        card.back.src = pre.src;
+        card.back.classList.add("on");
+        card.front.classList.remove("on");
+        [card.front, card.back] = [card.back, card.front];
+        queue.push(shown[i]); shown[i] = next;
+      };
+      pre.src = cld(next, transform);
+    }, ROTATE_EVERY * 1000);
+  }
+
+  rotator(document.getElementById("profileRow"), PROFILE_PHOTOS, 3, () => {
+    const el = document.createElement("div");
+    el.className = "profile";
+    el.innerHTML = '<div class="shade"></div><span class="online">Online</span>';
+    const holder = document.createElement("div");
+    holder.style.cssText = "position:absolute;inset:0";
+    el.prepend(holder);
+    return { el, holder };
+  }, PROFILE_T);
+
+  const isPhone = matchMedia("(max-width: 600px)").matches;
+  rotator(document.getElementById("shotRow"), CHAT_SHOTS, isPhone ? 1 : 3, () => {
+    const el = document.createElement("div");
+    el.className = "shot";
+    el.innerHTML = '<div class="shot-screen"></div>';
+    return { el, holder: el.firstChild };
+  }, CHAT_T);
+
+  // Hero chat: name + a random profile photo as the round avatar
+  document.getElementById("chatName").textContent = HERO_NAME;
+  const av = document.getElementById("chatAvatar");
+  av.textContent = HERO_NAME[0];
+  const avImg = new Image();
+  avImg.onload = () => av.appendChild(avImg);
+  avImg.src = cld(PROFILE_PHOTOS[Math.random() * PROFILE_PHOTOS.length | 0], "f_auto,q_auto,c_fill,g_face,w_96,h_96");
+
+  // Animated chat loop
+  const body = document.getElementById("chatBody");
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  async function playChat() {
+    while (true) {
+      body.innerHTML = "";
+      for (const m of CHAT) {
+        if (m.who === "bot") {
+          const t = document.createElement("div");
+          t.className = "msg bot typing show";
+          t.innerHTML = "<i></i><i></i><i></i>";
+          body.appendChild(t);
+          await wait(1300);
+          t.remove();
+        } else {
+          await wait(700);
+        }
+        const el = document.createElement("div");
+        el.className = "msg " + m.who;
+        el.textContent = m.text;
+        body.appendChild(el);
+        requestAnimationFrame(() => el.classList.add("show"));
+        await wait(1100);
+      }
+      await wait(3500);
+    }
+  }
+  playChat();
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // Sticky install bar (mobile) after scrolling past hero
+  const bar = document.getElementById("stickyBar");
+  addEventListener("scroll", () => bar.classList.toggle("on", scrollY > innerHeight * 0.6), { passive: true });
+</script>
+</body>
+</html>
